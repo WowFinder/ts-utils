@@ -10,7 +10,7 @@
     "scripts": {
         "lint": "eslint . --ext js,ts",
         "lint:fix": "eslint . --ext js,ts --fix",
-        "prettier": "prettier --write \"src/**/*.{js,ts,json,json5}",
+        "prettier": "prettier --write \"src/**/*.{js,ts,json,json5}\"",
         "test": "jest --passWithNoTests",
         "test:coverage": "jest --coverage --passWithNoTests",
         "tsc": "tsc",
