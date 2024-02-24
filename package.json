@@ -1,5 +1,5 @@
 {
-    "name": "model",
+    "name": "ts-utils",
     "version": "0.0.1",
     "description": "Data and Rules model for WowFinder",
     "main": "dist/index.js",
