@@ -12,11 +12,8 @@
         "outDir": "dist",
         "strict": true,
         "moduleResolution": "node",
-        "resolveJsonModule": true,
-        "paths": {
-            "@model/*": ["./*"]
-        }
+        "resolveJsonModule": true
     },
-    "include": ["src/**/*"],
+    "include": ["src/**/*", "index.ts"],
     "exclude": []
 }
