@@ -1,7 +1,6 @@
 // For a detailed explanation regarding each configuration property, visit:
 // https://jestjs.io/docs/en/configuration.html
 
-const { pathsToModuleNameMapper } = require('ts-jest');
 const { compilerOptions } = require('./tsconfig');
 
 module.exports = {
@@ -119,9 +118,9 @@ module.exports = {
     roots: ['./src'],
 
     modulePaths: [compilerOptions.baseUrl],
-    moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, {
+    /* moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, {
         useESM: true,
-    }),
+    }), */
 
     // Allows you to use a custom runner instead of Jest's default test runner
     // runner: "jest-runner",
