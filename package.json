@@ -7,6 +7,9 @@
     "author": "Edurne Pascual <herenvardo@gmail.com>",
     "license": "GPL3",
     "private": true,
+    "files": [
+        "dist"
+    ],
     "scripts": {
         "lint": "eslint . --ext js,ts",
         "lint:fix": "eslint . --ext js,ts --fix",
@@ -14,12 +17,14 @@
         "test": "jest --passWithNoTests",
         "test:coverage": "jest --coverage --passWithNoTests",
         "tsc": "tsc",
-        "checks:quick": "npm-run-all --sequential lint:fix prettier tsc",
-        "checks:standard": "npm-run-all --sequential lint:fix prettier tsc test",
+        "checks:quick": "npm-run-all --sequential lint tsc",
+        "checks:fix": "npm-run-all --sequential lint:fix prettier tsc",
+        "checks:standard": "npm-run-all --sequential lint prettier tsc test",
         "checks:pedantic": "npm-run-all --sequential lint:fix prettier tsc test:coverage build",
         "prebuild": "rimraf dist",
         "build": "tsc",
-        "prepublishOnly": "yarn run build"
+        "prepublishOnly": "yarn run build",
+        "prepare": "yarn run build"
     },
     "dependencies": {},
     "devDependencies": {
