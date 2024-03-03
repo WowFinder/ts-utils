@@ -1,4 +1,4 @@
-# ts-utils
+# @wowfinder/ts-utils
 
 General JS and TS utilities for the WowFinder project
 
