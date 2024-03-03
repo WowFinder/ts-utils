@@ -7,7 +7,6 @@
     "repository": "https://github.com/WowFinder/ts-utils.git",
     "author": "Edurne Pascual <herenvardo@gmail.com>",
     "license": "GPL3",
-    "private": true,
     "files": [
         "dist"
     ],
