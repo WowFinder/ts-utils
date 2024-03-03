@@ -1,8 +1,10 @@
 # ts-utils
 
-General JS and TS utilities
+General JS and TS utilities for the WowFinder project
 
-## Repository status
+This package includes a bunch of utility methods and classes used accross the different repos of the WowFinder project.
+
+## Repository / development status
 
 -   **Read / fetch**: stable ✅
 -   **Write / push**: possible (manual) ⚠️

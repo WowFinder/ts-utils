@@ -3,13 +3,13 @@ function assertDefined<T>(
     message?: string,
 ): asserts val is T {
     if (val === undefined) {
-        throw new Error(message || 'Failed assertion: Value is undefined');
+        throw new Error(message ?? 'Failed assertion: Value is undefined');
     }
 }
 
 function assertNonNull<T>(val: T | null, message?: string): asserts val is T {
     if (val === null) {
-        throw new Error(message || 'Failed assertion: Value is null');
+        throw new Error(message ?? 'Failed assertion: Value is null');
     }
 }
 
