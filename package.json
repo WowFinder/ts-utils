@@ -1,13 +1,12 @@
 {
-    "name": "ts-utils",
+    "name": "@wowfinder/ts-utils",
     "version": "0.0.2",
     "description": "General TS and JS utilities for WowFinder modules",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
-    "repository": "https://github.com/WowFinder/model.git",
+    "repository": "https://github.com/WowFinder/ts-utils.git",
     "author": "Edurne Pascual <herenvardo@gmail.com>",
     "license": "GPL3",
-    "private": true,
     "files": [
         "dist"
     ],
