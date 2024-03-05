@@ -13,7 +13,7 @@ interface Exportable<T extends JsonValue> {
     export(): T;
 }
 
-function jClone(obj: JsonValue): JsonValue {
+function jClone<T extends JsonValue>(obj: T): T {
     return JSON.parse(JSON.stringify(obj));
 }
 

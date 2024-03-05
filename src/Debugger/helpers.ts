@@ -7,16 +7,16 @@ const debugStyleColors = {
     wip: '#fa4',
 } as const;
 
-type debugStyleColor = (typeof debugStyleColors)[keyof typeof debugStyleColors];
+type DebugStyleColor = (typeof debugStyleColors)[keyof typeof debugStyleColors];
 
-type debugFunction = (title: string, style?: string, data?: any) => any;
+type DebugFunction = (title: string, style?: string, data?: any) => any;
 
 interface DebugCallArguments {
-    func: debugFunction;
+    func: DebugFunction;
     title: string;
-    color: debugStyleColor;
+    color: DebugStyleColor;
     data?: any;
 }
 
 export { debugStyleColors };
-export type { debugStyleColor, debugFunction, DebugCallArguments };
+export type { DebugStyleColor, DebugFunction, DebugCallArguments };
