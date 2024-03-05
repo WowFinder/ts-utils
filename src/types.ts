@@ -28,6 +28,10 @@ type Validator<T> = (value: T) => boolean;
 
 type PossibyString<T> = Exclude<T, string> | string;
 
+type OptionalKeyResolver<T> = (key: string) => T | undefined;
+
+type ForcedKeyResolver<T> = (key: string) => T;
+
 export type {
     Counter,
     Keyed,
@@ -38,4 +42,6 @@ export type {
     Expanded,
     Validator,
     PossibyString,
+    OptionalKeyResolver,
+    ForcedKeyResolver,
 };

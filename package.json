@@ -1,6 +1,6 @@
 {
     "name": "@wowfinder/ts-utils",
-    "version": "0.0.4",
+    "version": "0.0.6",
     "description": "General TS and JS utilities for WowFinder modules",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
