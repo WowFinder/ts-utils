@@ -65,7 +65,35 @@
                 "ignoreComments": true
             }
         ],
-        "@typescript-eslint/no-non-null-assertion": "off"
+        "@typescript-eslint/no-non-null-assertion": "off",
+        "@typescript-eslint/naming-convention": [
+            "warn",
+            {
+                "selector": [
+                    "variableLike",
+                    "memberLike",
+                    "property",
+                    "accessor",
+                    "method"
+                ],
+                "format": ["strictCamelCase"],
+                "leadingUnderscore": "forbid",
+                "trailingUnderscore": "forbid"
+            },
+            {
+                "selector": "typeLike",
+                "format": ["StrictPascalCase"],
+                "leadingUnderscore": "forbid",
+                "trailingUnderscore": "forbid"
+            },
+            {
+                "selector": "variable",
+                "modifiers": ["const"],
+                "format": ["strictCamelCase", "StrictPascalCase"],
+                "leadingUnderscore": "forbid",
+                "trailingUnderscore": "forbid"
+            }
+        ]
     },
     "overrides": [
         {

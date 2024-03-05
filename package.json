@@ -16,16 +16,15 @@
         "prettier": "prettier --write \"src/**/*.{js,ts,json,json5}\"",
         "test": "jest --passWithNoTests",
         "test:coverage": "jest --coverage --passWithNoTests",
-        "tsc": "tsc",
-        "checks:quick": "npm-run-all --sequential lint tsc",
-        "checks:fix": "npm-run-all --sequential lint:fix prettier tsc",
-        "checks:standard": "npm-run-all --sequential lint prettier tsc test",
-        "checks:pedantic": "npm-run-all --sequential lint:fix prettier build test:coverage",
+        "checks:quick": "npm-run-all -pc lint tsc",
+        "checks:fix": "npm-run-all -sc lint:fix prettier tsc",
+        "checks:standard": "npm-run-all -sc lint prettier tsc test",
+        "checks:pedantic": "npm-run-all -sc lint:fix prettier build test:coverage",
         "build:pre": "rimraf dist",
         "build:tsc": "tsc",
-        "build": "npm-run-all --sequential build:pre build:tsc",
-        "prepublishOnly": "yarn run build",
-        "prepare": "yarn run build"
+        "build": "npm-run-all -s build:pre build:tsc",
+        "prepublishOnly": "yarn version apply && yarn run checks:pedantic && yarn build",
+        "prepare": "build"
     },
     "devDependencies": {
         "@tsconfig/recommended": "^1.0.3",

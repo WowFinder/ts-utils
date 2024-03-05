@@ -1,5 +1,5 @@
 import { ConsoleDebugger } from './ConsoleDebugger';
-import { debugFunction, debugStyleColor } from './helpers';
+import { DebugFunction, DebugStyleColor } from './helpers';
 
 class BrowserDebugger extends ConsoleDebugger {
     protected debugCall({
@@ -8,9 +8,9 @@ class BrowserDebugger extends ConsoleDebugger {
         color,
         data,
     }: {
-        func: debugFunction;
+        func: DebugFunction;
         title: string;
-        color: debugStyleColor;
+        color: DebugStyleColor;
         data?: any;
     }): void {
         const style = `font-weight: bold; background-color: ${color}; color: black`;

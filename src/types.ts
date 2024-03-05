@@ -26,6 +26,8 @@ type Expanded<T extends { [key: string]: V }, V> = T & { ''?: V };
 
 type Validator<T> = (value: T) => boolean;
 
+type PossibyString<T> = Exclude<T, string> | string;
+
 export type {
     Counter,
     Keyed,
@@ -35,4 +37,5 @@ export type {
     Quantified,
     Expanded,
     Validator,
+    PossibyString,
 };

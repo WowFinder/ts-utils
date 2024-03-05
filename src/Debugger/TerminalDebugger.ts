@@ -1,5 +1,5 @@
 import { ConsoleDebugger } from './ConsoleDebugger';
-import { debugFunction, debugStyleColor } from './helpers';
+import { DebugFunction, DebugStyleColor } from './helpers';
 
 class TerminalDebugger extends ConsoleDebugger {
     protected debugCall({
@@ -7,9 +7,9 @@ class TerminalDebugger extends ConsoleDebugger {
         title,
         data,
     }: {
-        func: debugFunction;
+        func: DebugFunction;
         title: string;
-        color: debugStyleColor;
+        color: DebugStyleColor;
         data?: any;
     }): void {
         func(`${title} `, data);
