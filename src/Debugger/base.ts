@@ -60,6 +60,8 @@ abstract class Debugger {
         });
     }
 
+    // untestable by Jest due to the nature of the debugger statement
+    /* istanbul ignore next */
     breakpoint(): void {
         // eslint-disable-next-line no-debugger
         debugger;
@@ -82,7 +84,7 @@ abstract class Debugger {
         try {
             return action();
         } catch (ex: any) {
-            this.error(`Error: ${ex}`);
+            this.error(`${ex}`);
             return fallback;
         }
     }
