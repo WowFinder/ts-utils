@@ -1,5 +1,5 @@
 import { Debugger } from '../base';
-import { debugStyleColors } from 'Debugger/helpers';
+import { debugStyleColors } from '../helpers';
 
 const mocks = {
     debugCall: jest.fn(),
@@ -68,6 +68,54 @@ describe('Debugger', () => {
             title: 'title',
             data: 'data',
             color: debugStyleColors.trace,
+        });
+    });
+
+    it('unreachable', () => {
+        expect(() => Debugger.unreachable('test' as never)).toThrow(
+            'Unreachable code reached: test',
+        );
+    });
+
+    it('wip', () => {
+        debuggerImpl.wip('data');
+        expect(mocks.debugCall).toHaveBeenCalledWith({
+            func: console.warn,
+            title: 'WiP',
+            data: 'data',
+            color: debugStyleColors.wip,
+        });
+    });
+
+    it('notImplemented', () => {
+        debuggerImpl.notImplemented('key');
+        expect(mocks.debugCall).toHaveBeenCalledWith({
+            func: console.error,
+            title: 'Not implemented: key',
+            data: undefined,
+            color: debugStyleColors.error,
+        });
+    });
+
+    describe('tryOrFallback', () => {
+        const fallback = 'fallback';
+        it('success', () => {
+            const action = jest.fn(() => 'result');
+            expect(debuggerImpl.tryOrFallback(action, fallback)).toBe('result');
+            expect(action).toHaveBeenCalled();
+        });
+        it('fallback', () => {
+            const action = jest.fn(() => {
+                throw new Error('test');
+            });
+            expect(debuggerImpl.tryOrFallback(action, fallback)).toBe(fallback);
+            expect(action).toHaveBeenCalled();
+            expect(mocks.debugCall).toHaveBeenCalledWith({
+                func: console.error,
+                title: 'Error: test',
+                data: undefined,
+                color: debugStyleColors.error,
+            });
         });
     });
 });
