@@ -15,4 +15,4 @@ function parseIfNeeded<T>(value: T | string, parser: (input: string) => T): T {
 }
 
 export { capitalizeFirstLetter, parseIfNeeded };
-export type { Parser, TryParser, Stringifier };
+export type { Parser, TryParser, Stringifier, StringFormatter };
