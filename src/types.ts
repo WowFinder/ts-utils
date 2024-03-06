@@ -26,7 +26,7 @@ type Expanded<T extends { [key: string]: V }, V> = T & { ''?: V };
 
 type Validator<T> = (value: T) => boolean;
 
-type PossibyString<T> = Exclude<T, string> | string;
+type PossiblyString<T> = Exclude<T, string> | string;
 
 type OptionalKeyResolver<T> = (key: string) => T | undefined;
 
@@ -41,7 +41,7 @@ export type {
     Quantified,
     Expanded,
     Validator,
-    PossibyString,
+    PossiblyString,
     OptionalKeyResolver,
     ForcedKeyResolver,
 };
