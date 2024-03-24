@@ -1,6 +1,7 @@
 import { ConsoleDebugger } from './ConsoleDebugger';
 import { DebugFunction, DebugStyleColor } from './helpers';
 
+/* istanbul ignore next: partially covered by base class, rest relies on unmockable console calls */
 class BrowserDebugger extends ConsoleDebugger {
     protected debugCall({
         func,

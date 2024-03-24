@@ -1,30 +1,51 @@
 import { Debugger } from '../base';
+import { ConsoleDebugger } from '../ConsoleDebugger';
+import { SilentDebugger } from '../SilentDebugger';
 import { debugStyleColors } from '../helpers';
 
-const mocks = {
-    debugCall: jest.fn(),
-    time: jest.fn(),
-    timeLog: jest.fn(),
-    timeEnd: jest.fn(),
-};
-
-class DebuggerTestImpl extends Debugger {
-    protected debugCall = mocks.debugCall;
-    protected time = mocks.time;
-    protected timeLog = mocks.timeLog;
-    protected timeEnd = mocks.timeEnd;
+const mockDebugCall = jest.fn();
+class ConsoleDebuggerTestImpl extends ConsoleDebugger {
+    protected debugCall = mockDebugCall;
 }
 
-describe('Debugger', () => {
-    let debuggerImpl: DebuggerTestImpl;
+type LogMock = jest.SpyInstance<
+    void,
+    [message?: any, ...optionalParams: any[]],
+    any
+>;
+type LoglessMock = jest.SpyInstance<void, [label?: string | undefined], any>;
+
+describe('With mocked console', () => {
+    let mockedLog: LogMock;
+    let mockedTime: LoglessMock;
+    let mockedTimeLog: LogMock;
+    let mockedTimeEnd: LoglessMock;
+    let debuggerImpl: ConsoleDebugger;
+    let silentDebuggerImpl: SilentDebugger;
 
     beforeEach(() => {
-        debuggerImpl = new DebuggerTestImpl();
+        mockedLog = jest.spyOn(console, 'log').mockImplementation(() => {});
+        mockedTime = jest.spyOn(console, 'time').mockImplementation(() => {});
+        mockedTimeLog = jest
+            .spyOn(console, 'timeLog')
+            .mockImplementation(() => {});
+        mockedTimeEnd = jest
+            .spyOn(console, 'timeEnd')
+            .mockImplementation(() => {});
+        debuggerImpl = new ConsoleDebuggerTestImpl();
+        silentDebuggerImpl = new SilentDebugger();
+    });
+
+    afterEach(() => {
+        mockedLog.mockRestore();
+        mockedTime.mockRestore();
+        mockedTimeLog.mockRestore();
+        mockedTimeEnd.mockRestore();
     });
 
     it('output', () => {
         debuggerImpl.output('title', 'data');
-        expect(mocks.debugCall).toHaveBeenCalledWith({
+        expect(mockDebugCall).toHaveBeenCalledWith({
             func: console.log,
             title: 'title',
             data: 'data',
@@ -34,7 +55,7 @@ describe('Debugger', () => {
 
     it('error', () => {
         debuggerImpl.error('title', 'data');
-        expect(mocks.debugCall).toHaveBeenCalledWith({
+        expect(mockDebugCall).toHaveBeenCalledWith({
             func: console.error,
             title: 'title',
             data: 'data',
@@ -44,7 +65,7 @@ describe('Debugger', () => {
 
     it('group', () => {
         debuggerImpl.group('title', 'data');
-        expect(mocks.debugCall).toHaveBeenCalledWith({
+        expect(mockDebugCall).toHaveBeenCalledWith({
             func: console.groupCollapsed,
             title: 'title',
             data: 'data',
@@ -54,7 +75,7 @@ describe('Debugger', () => {
 
     it('groupEnd', () => {
         debuggerImpl.groupEnd();
-        expect(mocks.debugCall).toHaveBeenCalledWith({
+        expect(mockDebugCall).toHaveBeenCalledWith({
             func: console.groupEnd,
             title: '',
             color: debugStyleColors.group,
@@ -63,7 +84,7 @@ describe('Debugger', () => {
 
     it('trace', () => {
         debuggerImpl.trace('title', 'data');
-        expect(mocks.debugCall).toHaveBeenCalledWith({
+        expect(mockDebugCall).toHaveBeenCalledWith({
             func: console.trace,
             title: 'title',
             data: 'data',
@@ -79,7 +100,7 @@ describe('Debugger', () => {
 
     it('wip', () => {
         debuggerImpl.wip('data');
-        expect(mocks.debugCall).toHaveBeenCalledWith({
+        expect(mockDebugCall).toHaveBeenCalledWith({
             func: console.warn,
             title: 'WiP',
             data: 'data',
@@ -89,7 +110,7 @@ describe('Debugger', () => {
 
     it('notImplemented', () => {
         debuggerImpl.notImplemented('key');
-        expect(mocks.debugCall).toHaveBeenCalledWith({
+        expect(mockDebugCall).toHaveBeenCalledWith({
             func: console.error,
             title: 'Not implemented: key',
             data: undefined,
@@ -110,12 +131,50 @@ describe('Debugger', () => {
             });
             expect(debuggerImpl.tryOrFallback(action, fallback)).toBe(fallback);
             expect(action).toHaveBeenCalled();
-            expect(mocks.debugCall).toHaveBeenCalledWith({
+            expect(mockDebugCall).toHaveBeenCalledWith({
                 func: console.error,
                 title: 'Error: test',
                 data: undefined,
                 color: debugStyleColors.error,
             });
+        });
+    });
+
+    it('time', () => {
+        debuggerImpl.time('title');
+        expect(mockedTime).toHaveBeenCalled();
+    });
+
+    it('timeLog', () => {
+        debuggerImpl.timeLog('title', 'data');
+        expect(mockedTimeLog).toHaveBeenCalledWith('title', 'data');
+    });
+
+    it('timeEnd', () => {
+        debuggerImpl.timeEnd('title');
+        expect(mockedTimeEnd).toHaveBeenCalledWith('title');
+    });
+
+    describe('SilentDebugger', () => {
+        it('output', () => {
+            silentDebuggerImpl.output('title', 'data');
+            expect(mockDebugCall).not.toHaveBeenCalled();
+            expect(mockedLog).not.toHaveBeenCalled();
+        });
+
+        it('time', () => {
+            silentDebuggerImpl.time();
+            expect(mockedTime).not.toHaveBeenCalled();
+        });
+
+        it('timeLog', () => {
+            silentDebuggerImpl.timeLog();
+            expect(mockedTimeLog).not.toHaveBeenCalled();
+        });
+
+        it('timeEnd', () => {
+            silentDebuggerImpl.timeEnd();
+            expect(mockedTimeEnd).not.toHaveBeenCalled();
         });
     });
 });

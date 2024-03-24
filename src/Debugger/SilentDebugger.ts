@@ -5,15 +5,15 @@ class SilentDebugger extends Debugger {
         // non-op
     }
 
-    protected time(): void {
+    time(): void {
         // non-op
     }
 
-    protected timeLog(): void {
+    timeLog(): void {
         // non-op
     }
 
-    protected timeEnd(): void {
+    timeEnd(): void {
         // non-op
     }
 }

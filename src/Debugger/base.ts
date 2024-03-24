@@ -12,9 +12,9 @@ abstract class Debugger {
         data,
     }: DebugCallArguments): void;
 
-    protected abstract time(title: string): void;
-    protected abstract timeLog(title: string, ...data: any[]): void;
-    protected abstract timeEnd(title: string): void;
+    abstract time(title: string): void;
+    abstract timeLog(title: string, ...data: any[]): void;
+    abstract timeEnd(title: string): void;
 
     output(title: string, data?: any): void {
         this.debugCall({
