@@ -34,7 +34,7 @@ describe('utils/numbers.ts', () => {
     });
     describe('toRoman', () => {
         it('should convert a number to its roman numeral form', () => {
-            expect(toRoman(2345)).toBe('MMCCCXLV');
+            expect(toRoman(2335)).toBe('MMCCCXXXV');
         });
         it('should handle negative numbers', () => {
             expect(toRoman(-761)).toBe('-DCCLXI');

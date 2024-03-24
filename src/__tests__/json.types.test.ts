@@ -1,4 +1,4 @@
-import { JsonValue } from '../json';
+import { JsonValue, JsonCompatible } from '../json';
 import { expectAssignable, expectNotAssignable } from 'tsd';
 
 describe('utils/json.ts', () => {
@@ -70,6 +70,39 @@ describe('utils/json.ts', () => {
 
         it('should not allow nested invalid values', () => {
             expectNotAssignable<JsonValue>({ foo: () => {} });
+        });
+
+        it('should not allow values without a mutable string (or numeric) index signature', () => {
+            expectNotAssignable<JsonValue>({ [Symbol('foo')]: 'bar' });
+            expectNotAssignable<JsonValue>({ foo: 'bar' } as const);
+        });
+    });
+    describe('JsonCompatible', () => {
+        it('should allow JsonValue', () => {
+            type Compatible = JsonCompatible<JsonValue>;
+            expectAssignable<JsonValue>({} as Compatible);
+        });
+        it('should not allow NotAssignableToJson', () => {
+            type NotBigInt = JsonCompatible<bigint>;
+            expectNotAssignable<NotBigInt>(42n);
+            type NotSymbol = JsonCompatible<symbol>;
+            expectNotAssignable<NotSymbol>(Symbol('foo'));
+        });
+        it('should not allow unknown', () => {
+            type NotUnknown = JsonCompatible<unknown>;
+            expectNotAssignable<NotUnknown>(undefined);
+        });
+        it('should allow structures made with from valid JSON values', () => {
+            type SimpleObject = JsonCompatible<{ foo: string }>;
+            expectAssignable<SimpleObject>({ foo: 'bar' });
+            type SimpleArray = JsonCompatible<string[]>;
+            expectAssignable<SimpleArray>(['foo', 'bar']);
+            type NestedObject = JsonCompatible<{ foo: { bar: number } }>;
+            expectAssignable<NestedObject>({ foo: { bar: 42 } });
+        });
+        it('should not allow structures containing invalid JSON values', () => {
+            type InvalidObject = JsonCompatible<{ foo: symbol }>;
+            expectNotAssignable<InvalidObject>({ foo: Symbol('bar') });
         });
     });
 });

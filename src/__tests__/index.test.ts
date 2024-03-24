@@ -9,6 +9,9 @@ describe('utils/index.ts', () => {
         expect(utils).toHaveProperty('toRoman');
         expect(utils).toHaveProperty('assertDefined');
         expect(utils).toHaveProperty('assertNonNull');
-        expect(utils).toHaveProperty('jClone');
+        expect(utils).toHaveProperty('toJsonValue');
+        expect(utils).toHaveProperty('safeJsonStringify');
+        expect(utils).toHaveProperty('safeJsonParse');
+        expect(utils).toHaveProperty('safeJsonClone');
     });
 });
