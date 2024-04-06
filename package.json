@@ -51,7 +51,7 @@
         "rxjs": "^7.8.1",
         "skott": "^0.33.2",
         "ts-jest": "^29.1.2",
-        "tsd": "^0.30.7",
+        "tsd": "^0.31.0",
         "typescript": "^5.3.3"
     },
     "packageManager": "yarn@4.1.0"
