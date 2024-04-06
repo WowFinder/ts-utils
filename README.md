@@ -6,13 +6,11 @@ This package includes a bunch of utility methods and classes used accross the di
 
 ## Repository / development status
 
--   **Read / fetch**: stable ✅
--   **Write / push**: possible (manual) ⚠️
--   **Development**: possible (manual) ⚠️, insufficient coverage ⚠️
+-   **Development**: semi-stable 🚧
 
 ### Sonar public analysis
 
-Overview: https://sonarcloud.io/project/overview?id=WowFinder_ts-utils
+Overview: <https://sonarcloud.io/project/overview?id=WowFinder_ts-utils>
 
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=WowFinder_ts-utils&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=WowFinder_ts-utils)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=WowFinder_ts-utils&metric=coverage)](https://sonarcloud.io/summary/new_code?id=WowFinder_ts-utils)
