@@ -1,11 +1,12 @@
+type OverrideComposer<T> = (base: T, ...overrides: T[]) => T;
 interface OverridableBuilder<T> {
     base: T;
-    composer: (base: T, ...overrides: T[]) => T;
+    composer: OverrideComposer<T>;
 }
 
 class Overridable<T> {
     #base: T;
-    #composer: (base: T, ...overrides: T[]) => T;
+    #composer: OverrideComposer<T>;
 
     constructor({ base, composer }: OverridableBuilder<T>) {
         this.#base = base;
@@ -17,5 +18,5 @@ class Overridable<T> {
     }
 }
 
-export type { OverridableBuilder };
+export type { OverridableBuilder, OverrideComposer };
 export { Overridable };

@@ -1,12 +1,12 @@
 {
     "name": "@wowfinder/ts-utils",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "description": "General TS and JS utilities for WowFinder modules",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
     "repository": "https://github.com/WowFinder/ts-utils.git",
     "author": "Edurne Pascual <herenvardo@gmail.com>",
-    "license": "GPL3",
+    "license": "GPL-3.0-or-later",
     "files": [
         "dist"
     ],
@@ -21,8 +21,8 @@
         "skott:circular": "skott -nit --showCircularDependencies --displayMode=raw",
         "checks:quick": "npm-run-all -pc lint tsc",
         "checks:fix": "npm-run-all -sc lint:fix format tsc",
-        "checks:standard": "npm-run-all -sc lint format tsc test",
-        "checks:full": "npm-run-all -sc lint:fix format build test:coverage",
+        "checks:standard": "npm-run-all -sc lint format tsc test skott:circular",
+        "checks:full": "npm-run-all -sc lint:fix format build test:coverage skott:circular",
         "checks:pedantic": "npm-run-all -sc lint format:check build test:coverage skott:circular",
         "build:pre": "rimraf dist",
         "build:tsc": "tsc",
@@ -31,16 +31,16 @@
         "prepare": "build"
     },
     "devDependencies": {
-        "@tsconfig/recommended": "^1.0.3",
+        "@tsconfig/recommended": "^1.0.6",
         "@types/jest": "^29.5.12",
-        "@typescript-eslint/eslint-plugin": "^7.1.0",
-        "@typescript-eslint/parser": "^7.1.0",
+        "@typescript-eslint/eslint-plugin": "^7.6.0",
+        "@typescript-eslint/parser": "^7.6.0",
         "eslint": "^8.57.0",
         "eslint-config-prettier": "^9.1.0",
         "eslint-config-standard": "^17.1.0",
         "eslint-plugin-deprecation": "^2.0.0",
         "eslint-plugin-import": "^2.29.1",
-        "eslint-plugin-n": "^16.6.2",
+        "eslint-plugin-n": "^17.0.0",
         "eslint-plugin-node": "^11.1.0",
         "eslint-plugin-prettier": "^5.1.3",
         "eslint-plugin-promise": "^6.1.1",
@@ -52,7 +52,7 @@
         "skott": "^0.33.2",
         "ts-jest": "^29.1.2",
         "tsd": "^0.31.0",
-        "typescript": "^5.3.3"
+        "typescript": "^5.4.4"
     },
-    "packageManager": "yarn@4.1.0"
+    "packageManager": "yarn@4.1.1"
 }
