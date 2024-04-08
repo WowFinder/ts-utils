@@ -13,5 +13,6 @@ describe('utils/index.ts', () => {
         expect(utils).toHaveProperty('safeJsonStringify');
         expect(utils).toHaveProperty('safeJsonParse');
         expect(utils).toHaveProperty('safeJsonClone');
+        expect(utils).toHaveProperty('asArray');
     });
 });
