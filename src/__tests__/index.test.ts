@@ -1,6 +1,6 @@
 import * as utils from '../';
 
-describe('utils/index.ts', () => {
+describe('index.ts', () => {
     it('should export all utils', () => {
         expect(utils).toHaveProperty('capitalizeFirstLetter');
         expect(utils).toHaveProperty('fThousands');
@@ -14,5 +14,12 @@ describe('utils/index.ts', () => {
         expect(utils).toHaveProperty('safeJsonParse');
         expect(utils).toHaveProperty('safeJsonClone');
         expect(utils).toHaveProperty('asArray');
+    });
+});
+describe('.setup.ts', () => {
+    it('should run the module', async () => {
+        const setup = await require('../.setup');
+        expect(setup).toBeDefined();
+        expect(setup.cleanup).not.toThrow();
     });
 });
