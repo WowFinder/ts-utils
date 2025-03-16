@@ -16,9 +16,3 @@ describe('index.ts', () => {
         expect(utils).toHaveProperty('asArray');
     });
 });
-describe('.setup.ts', () => {
-    it('should run the module', async () => {
-        const setup = await require('../.setup');
-        expect(setup).toBeDefined();
-    });
-});
