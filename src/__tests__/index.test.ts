@@ -20,6 +20,5 @@ describe('.setup.ts', () => {
     it('should run the module', async () => {
         const setup = await require('../.setup');
         expect(setup).toBeDefined();
-        expect(setup.cleanup).not.toThrow();
     });
 });

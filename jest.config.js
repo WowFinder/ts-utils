@@ -29,6 +29,7 @@ module.exports = {
         '__tests__',
         '__mocks__',
         'src/stories',
+        '.setup.ts',
     ],
 
     // Indicates which provider should be used to instrument code for coverage

@@ -15,7 +15,6 @@ type JsonValue =
           [key: string]: JsonValue;
       };
 
-/* eslint-disable @typescript-eslint/ban-types */
 type NotAssignableToJson = bigint | symbol | Function;
 
 type JsonCompatible<T> = T extends JsonPrimitive

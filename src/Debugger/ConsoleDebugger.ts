@@ -5,12 +5,12 @@ abstract class ConsoleDebugger extends Debugger {
         console.time(title);
     }
 
-    timeLog(title: string, ...data: any[]): void {
-        console.timeLog(title, ...data);
-    }
-
     timeEnd(title: string): void {
         console.timeEnd(title);
+    }
+
+    timeLog(title: string, ...data: any[]): void {
+        console.timeLog(title, ...data);
     }
 }
 

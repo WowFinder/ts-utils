@@ -9,11 +9,11 @@ class SilentDebugger extends Debugger {
         // non-op
     }
 
-    timeLog(): void {
+    timeEnd(): void {
         // non-op
     }
 
-    timeEnd(): void {
+    timeLog(): void {
         // non-op
     }
 }
