@@ -44,7 +44,6 @@ type OnlyRequired<T> = Pick<T, RequiredKeys<T>>;
 
 type NotNill<T> = T extends null | undefined ? never : T;
 
-/* eslint-disable-next-line @typescript-eslint/ban-types */
 type Primitive = undefined | null | boolean | string | number | Function;
 
 type DeepRequired<T> = T extends Primitive
