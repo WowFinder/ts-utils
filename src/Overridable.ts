@@ -5,8 +5,8 @@ interface OverridableBuilder<T> {
 }
 
 class Overridable<T> {
-    #base: T;
-    #composer: OverrideComposer<T>;
+    readonly #base: T;
+    readonly #composer: OverrideComposer<T>;
 
     constructor({ base, composer }: OverridableBuilder<T>) {
         this.#base = base;

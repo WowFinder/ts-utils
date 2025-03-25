@@ -13,4 +13,9 @@ function assertNonNull<T>(val: T | null, message?: string): asserts val is T {
     }
 }
 
-export { assertDefined, assertNonNull };
+function assertNonNil<T>(val: T | null | undefined, message?: string): asserts val is T {
+    assertDefined(val, message);
+    assertNonNull(val, message);
+}
+
+export { assertDefined, assertNonNull, assertNonNil };

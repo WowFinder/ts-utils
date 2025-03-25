@@ -56,22 +56,8 @@ type DeepRequired<T> = T extends Primitive
                 : DeepRequired<T[P]>;
       };
 
-interface TypedDeepRecord<T> {
-    [key: string]: TypedDeepRecord<T> | T;
-}
-
-type DeepRecord = TypedDeepRecord<string>;
-
-type RecursiveTypedRecordLoader<T> = (
-    localBaseFileName: string,
-) => TypedDeepRecord<T> | T;
-
-type RecursiveRecordLoader = RecursiveTypedRecordLoader<string>;
-
 export type {
     Counter,
-    TypedDeepRecord,
-    DeepRecord,
     DeepRequired,
     Expanded,
     ForcedKeyResolver,
@@ -83,7 +69,6 @@ export type {
     OptionalKeyResolver,
     PossiblyString,
     Quantified,
-    RecursiveTypedRecordLoader,
-    RecursiveRecordLoader,
     Validator,
 };
+export type * from './Record';
