@@ -29,9 +29,7 @@ describe('utils/assertions.ts', () => {
         });
 
         it('should throw an error if the value is undefined', () => {
-            expect(() => assertNonNil(undefined)).toThrow(
-                'Value is undefined',
-            );
+            expect(() => assertNonNil(undefined)).toThrow('Value is undefined');
         });
 
         it('should not throw an error if the value is defined', () => {
