@@ -13,7 +13,10 @@ function assertNonNull<T>(val: T | null, message?: string): asserts val is T {
     }
 }
 
-function assertNonNil<T>(val: T | null | undefined, message?: string): asserts val is T {
+function assertNonNil<T>(
+    val: T | null | undefined,
+    message?: string,
+): asserts val is T {
     assertDefined(val, message);
     assertNonNull(val, message);
 }
