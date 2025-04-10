@@ -1,7 +1,7 @@
 {
     "name": "@wowfinder/ts-utils",
     "type": "commonjs",
-    "version": "0.1.9",
+    "version": "0.1.10",
     "description": "General TS and JS utilities for WowFinder modules",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
@@ -46,7 +46,7 @@
         "@typescript-eslint/parser": "^8.29.1",
         "@typescript-eslint/utils": "^8.29.1",
         "eslint": "^9.24.0",
-        "eslint-config-prettier": "^10.1.1",
+        "eslint-config-prettier": "^10.1.2",
         "eslint-config-standard": "^17.1.0",
         "eslint-plugin-deprecation": "^3.0.0",
         "eslint-plugin-import": "^2.31.0",
@@ -63,8 +63,8 @@
         "rxjs": "^7.8.2",
         "skott": "^0.35.4",
         "ts-jest": "^29.3.1",
-        "tsd": "^0.31.2",
+        "tsd": "^0.32.0",
         "typescript": "^5.8.3"
     },
-    "packageManager": "yarn@4.8.1"
+    "packageManager": "yarn@4.9.0"
 }
