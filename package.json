@@ -1,7 +1,7 @@
 {
     "name": "@wowfinder/ts-utils",
     "type": "commonjs",
-    "version": "0.1.13",
+    "version": "0.1.14",
     "description": "General TS and JS utilities for WowFinder modules",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
@@ -38,7 +38,7 @@
         "globals": "^16.0.0"
     },
     "devDependencies": {
-        "@eslint/compat": "^1.2.8",
+        "@eslint/compat": "^1.2.9",
         "@stylistic/eslint-plugin-js": "^4.2.0",
         "@tsconfig/recommended": "^1.0.8",
         "@types/jest": "^29.5.14",
