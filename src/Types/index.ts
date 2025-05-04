@@ -1,5 +1,5 @@
-export type * from './keys';
-export type * from './record';
-export type * from './utility';
-export type * from './Quantified';
-export type * from './Counter';
+export * from './keys';
+export * from './record';
+export * from './utility';
+export * from './Quantified';
+export * from './Counter';
