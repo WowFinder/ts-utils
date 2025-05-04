@@ -5,4 +5,17 @@ type Counter = {
     initial: number;
 };
 
-export type { Counter };
+type CounterBuilder = Partial<Counter> & {
+    max: number;
+};
+
+function mkCounter({
+    min = 0,
+    max,
+    current,
+    initial,
+}: CounterBuilder): Counter {
+    return { min, max, current: current ?? max, initial: initial ?? max };
+}
+
+export { type Counter, mkCounter };
