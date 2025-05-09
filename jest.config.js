@@ -28,7 +28,6 @@ module.exports = {
         '/node_modules/',
         '__tests__',
         '__mocks__',
-        'src/stories',
         '.setup.ts',
     ],
 
@@ -49,7 +48,7 @@ module.exports = {
             branches: 100,
             functions: 100,
             lines: 100,
-            statements: 0,
+            statements: 100,
         },
     },
 
