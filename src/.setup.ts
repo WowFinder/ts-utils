@@ -7,10 +7,7 @@ import path from 'path';
 
 /* istanbul ignore next test script - not testable via jest */
 function writeBufferSync(filePath: string[], raw: string): void {
-    fs.writeFileSync(
-        path.resolve(__dirname, ...filePath),
-        Buffer.from(raw, 'utf-8'),
-    );
+    fs.writeFileSync(path.resolve(__dirname, ...filePath), raw, 'utf-8');
 }
 
 /* istanbul ignore next test script - not testable via jest */
